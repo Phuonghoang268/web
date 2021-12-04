@@ -1,0 +1,67 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+.app-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: xx-large;
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 120px 0px 120px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+
+.footer {
+  background-color: #CEE5D0;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
+}
+
+#entrance-time:before {
+  content: 'Từ:';
+  margin-right: .6em;
+}
+
+#exit-time:before {
+  content: 'Đến:';
+  margin-right: .6em;
+}
+
+#entrance-date:before {
+  content: 'Ngày gửi:';
+  margin-right: .6em;
+}
+
+#exit-date:before {
+  content: 'Ngày trả:';
+  margin-right: .6em;
+}
+
+.title {
+  padding-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.form-group {
+  padding-top: 10px;
+}
+
+.park-list-tab {
+  background-color: #E5E5E5;
+}
+
+.hide{
+  visibility: hidden;
+}

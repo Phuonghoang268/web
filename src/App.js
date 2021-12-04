@@ -1,26 +1,37 @@
+import logo from './logo.svg';
 import './App.css';
-import { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Main from './components/MainComponent';
-import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/configureStore';
+import Main from './components/NewParkComponent';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Parks from './components/Parks';
+import InforWatching from './components/InforWatching';
+// import UpdateInfor from './components/UpdateInfor'
+// import Review from './components/Review'
 
-const store = ConfigureStore();
-
-class App extends Component {
-
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <div>
+function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <Parks />
+          </Route>
+          <Route path="/Main">
             <Main />
-          </div>
-        </BrowserRouter>
-      </Provider>
+          </Route>
+          <Route path="/InforWatching">
+            <InforWatching />
+          </Route>
+          {/* <Route path="/Edit">
+            <UpdateInfor />
+          </Route>
+          <Route path="/Review">
+            <Review />
+          </Route> */}
+        </Switch>
 
-    );
-  }
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

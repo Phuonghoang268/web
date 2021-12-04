@@ -1,0 +1,56 @@
+{
+  "parks": [
+    {
+      "name": "BigC",
+      "total_space": 50,
+      "location": "Hà Nội",
+      "price": 4.5,
+      "hasCamera": true,
+      "hasRoof": true,
+      "allowOvernight": true,
+      "allowBooking": true,
+      "description": "abc",
+      "image_url": null,
+      "id": 1
+    },
+    {
+      "name": "Pizza Hut",
+      "total_space": "23",
+      "location": "Số 1, Phạm Văn Đồng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội",
+      "price": "12",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "12",
+      "image_url": "",
+      "id": 2
+    },
+    {
+      "name": "dai hoc cong nghe",
+      "total_space": "50",
+      "location": "144 xuan thủy cầu giấy",
+      "price": "32",
+      "hasCamera": "true",
+      "hasRoof": "true",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "hghrgimklbmkdbmb b ",
+      "image_url": "",
+      "id": 3
+    },
+    {
+      "name": "",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "image_url": "",
+      "id": 4
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Patrick Hand", cursive;
 }
 
 .app-name {
-  font-family: 'Fredoka One', cursive;
+  font-family: "Fredoka One", cursive;
   font-size: xx-large;
 }
 
@@ -13,9 +13,8 @@
   border-bottom: 1px ridge;
   min-height: 400px;
 }
-
 .footer {
-  background-color: #CEE5D0;
+  background-color: #ebffed;
   margin: 0px auto;
   padding: 20px 0px 20px 0px;
 }
@@ -27,23 +26,23 @@ address {
 }
 
 #entrance-time:before {
-  content: 'Từ:';
-  margin-right: .6em;
+  content: "Từ:";
+  margin-right: 0.6em;
 }
 
 #exit-time:before {
-  content: 'Đến:';
-  margin-right: .6em;
+  content: "Đến:";
+  margin-right: 0.6em;
 }
 
 #entrance-date:before {
-  content: 'Ngày gửi:';
-  margin-right: .6em;
+  content: "Ngày gửi:";
+  margin-right: 0.6em;
 }
 
 #exit-date:before {
-  content: 'Ngày trả:';
-  margin-right: .6em;
+  content: "Ngày trả:";
+  margin-right: 0.6em;
 }
 
 .title {
@@ -58,10 +57,93 @@ p {
   padding-top: 10px;
 }
 
-.park-list-tab {
-  background-color: #E5E5E5;
+.park-card {
+  margin-top: 10px;
+  margin-left: -30px;
 }
 
-.hide{
-  visibility: hidden;
+.park-list-tab {
+  background-color: #e5e5e5;
+}
+
+.park-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border: 6px solid gray;
+  border-radius: 8px;
+}
+.park-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.park-preview h2 {
+  font-size: 50px;
+  color: #f1356d;
+  margin-bottom: 8px;
+}
+
+.park-preview h4 {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 8px;
+}
+
+/* .park-preview Button {
+  display: flex;
+  float: right;
+} */
+
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.home {
+  background: url(./image/car.jpg);
+  background-size: cover;
+}
+
+.form-review button {
+  background-color: #4caf50;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+  float: right;
+  font-size: 25px;
+  margin: 0;
+}
+
+.input-row lable {
+  font-size: 25px;
+}
+
+.input-row input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+.input-row input[type="file"] {
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.other {
+  font-size: 25px;
+}
+.other input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 2px;
+  margin-bottom: 16px;
+  height: 100px;
+  resize: vertical;
 }

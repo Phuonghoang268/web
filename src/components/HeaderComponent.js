@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
     NavItem, NavbarToggler, Nav, Collapse, Navbar,
     NavbarBrand, Button
@@ -51,11 +51,9 @@ class Header extends Component {
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <Link to='/login'>
-                                    <Button outline>
-                                        <span className="fa fa-sign-in fa-lg"></span> Đăng nhập
-                                    </Button>
-                                </Link>
+                                <Button style={{ color: '#125C13' }} outline>
+                                    <span className="fas fa-sign-in-alt"></span> <strong>Đăng nhập</strong>
+                                </Button>
                             </NavItem>
                         </Nav>
                     </Collapse>

@@ -8,6 +8,8 @@ import UpdateInfor from './components/UpdateInfor';
 
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
+import RemovePark from './components/RemovePark';
+
 
 const store = ConfigureStore();
 
@@ -28,6 +30,9 @@ function App() {
             </Route>
             <Route path="/Edit/:id">
               <UpdateInfor />
+            </Route>
+            <Route path="/Delete/:id">
+              <RemovePark />
             </Route>
             {/*<Route path="/Review">
             <Review />

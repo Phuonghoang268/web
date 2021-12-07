@@ -22,6 +22,19 @@ async function submitToServer(data) {
         console.error(error);
     }
 
+    try {
+        var input = document.querySelector('input[type="file"]')
+        var data = new FormData()
+        data.append('file', input.files[0])
+        fetch('http://localhost:8080/images', {
+            method: 'POST',
+            body: data
+        })
+    }
+    catch (error) {
+        console.error(error);
+    }
+
 }
 
 const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }

@@ -35,7 +35,37 @@ const renderOther = ({ type, lable, input }) => (
     </span >
 );
 
-const ContactFormFunc = () => {
+async function submitToServer(data, id) {
+
+    try {
+        let response = await fetch('http://localhost:8000/parks/' + id, {
+            method: 'POST',
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        let responseJson = await response.json();
+        return responseJson;
+    }
+    catch (error) {
+        console.error(error);
+    }
+
+}
+
+
+
+const submit = ({ name = '', total_space = '', location = '', price = '', hasCamera = '', hasRoof = '', allowOvernight = '', allowBooking = '', description = '' }, id) => {
+
+
+    submitToServer({ name, total_space, location, price, hasCamera, hasRoof, allowOvernight, allowBooking, description }, id)
+        .then(data => {
+            console.log(data);
+            window.location.href = '/';
+        });
+
+}
+
+const ContactFormFunc = ({ handleSubmit }) => {
     const { id } = useParams();
     const [park, setpark] = useState(null)
 
@@ -51,9 +81,10 @@ const ContactFormFunc = () => {
     }, []);
 
 
+
     return (
 
-        <form initialValue={{ name: "a" }}>
+        <form onSubmit={handleSubmit(submit)}>
             {park && (
                 <Paper className="form-review" elevation={10} style={paperStyle} >
                     <Grid align='center' style={{ color: "purple" }}>
@@ -87,6 +118,8 @@ const ContactFormFunc = () => {
                     <br />
                     <Field name="description" lable='Description' component={renderOther} type="text" format={value => value = `${park.description}`} />
                     <br /><br />
+                    <label for="submit-form" tabindex="0" style={{ color: "white" }}>Submit</label>
+                    <input type="submit" href="\" />
                 </Paper>
             )}
         </form >

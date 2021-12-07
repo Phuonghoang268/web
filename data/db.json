@@ -40,16 +40,15 @@
       "id": 3
     },
     {
-      "name": "",
+      "name": "a",
       "total_space": "",
-      "location": "",
+      "location": "a",
       "price": "",
       "hasCamera": "",
       "hasRoof": "",
       "allowOvernight": "",
       "allowBooking": "",
       "description": "",
-      "image_url": "",
       "id": 4
     }
   ]

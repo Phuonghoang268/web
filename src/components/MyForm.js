@@ -1,12 +1,11 @@
 
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import BookIcon from '@mui/icons-material/Book';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
-import { connect } from 'react-redux';
 
 async function submitToServer(data) {
 
@@ -24,21 +23,23 @@ async function submitToServer(data) {
     }
 
 }
-const paperStyle = { padding: 20, height: '130vh', width: '800px', margin: "20px 20px" }
+
+const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }
 
 
-const submit = ({ name = '', total_space = '', location = '', price = '', hasCamera = '', hasRoof = '', allowOvernight = '', allowBooking = '', description = '', image_url = '' }) => {
-    submitToServer({ name, total_space, location, price, hasCamera, hasRoof, allowOvernight, allowBooking, description, image_url })
+const submit = ({ name = '', total_space = '', location = '', price = '', hasCamera = '', hasRoof = '', allowOvernight = '', allowBooking = '', description = '' }) => {
+    submitToServer({ name, total_space, location, price, hasCamera, hasRoof, allowOvernight, allowBooking, description })
         .then(data => {
             console.log(data);
             window.location.href = '/';
         });
+
 }
 
 const renderField = ({ type, lable, input }) => (
     <span className="input-row">
         <lable>{lable}</lable>
-        <input {...input} type={type} placeholder={lable + "*"} required />
+        <input {...input} type={type} placeholder={lable + "*"} />
     </span >
 );
 
@@ -56,6 +57,34 @@ const renderOther = ({ type, lable, input }) => (
     </span >
 );
 
+const UploadAndDisplayImage = ({ lable }) => {
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    return (
+        <div className="input-row">
+            <lable>{lable}</lable>
+            {selectedImage && (
+                <div>
+                    <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                    <br />
+                    <button onClick={() => setSelectedImage(null)}>Remove</button>
+                </div>
+            )}
+            <br />
+
+            <br />
+            <input
+                type="file"
+                name="myImage"
+                onChange={(event) => {
+                    console.log(event.target.files[0]);
+                    setSelectedImage(event.target.files[0]);
+                }}
+            />
+        </div>
+    );
+};
+
 const ContactFormFunc = ({ handleSubmit }) => (
 
 
@@ -68,7 +97,7 @@ const ContactFormFunc = ({ handleSubmit }) => (
             <Field className="field" name="name" lable='Name' component={renderField} type="text" />
             <br />
 
-            <Field name="image_url" lable='Image' component={renderField} type="file" />
+            <Field name="image_url" lable='Image' component={UploadAndDisplayImage} type="file" />
             <br />
 
             <Field name="location" lable='Location' component={renderField} type="text" />
@@ -92,7 +121,9 @@ const ContactFormFunc = ({ handleSubmit }) => (
             <br />
             <Field name="description" lable='Description' component={renderOther} type="text" />
             <br /><br />
-            <button type="submit" href="\">Submit</button>
+            <label for="submit-form" tabindex="0" style={{ color: "white" }}>Submit</label>
+            <input type="submit" href="\" />
+
 
         </Paper>
     </form >

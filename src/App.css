@@ -87,11 +87,6 @@ p {
   margin-bottom: 8px;
 }
 
-/* .park-preview Button {
-  display: flex;
-  float: right;
-} */
-
 .content {
   max-width: 600px;
   margin: 40px auto;
@@ -102,7 +97,7 @@ p {
   background-size: cover;
 }
 
-.form-review button {
+.form-review input[type="submit"] {
   background-color: #4caf50;
   border-radius: 5px;
   width: 80px;
@@ -146,4 +141,7 @@ p {
   margin-bottom: 16px;
   height: 100px;
   resize: vertical;
+}
+.input-row input {
+  font-size: 25px;
 }

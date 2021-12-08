@@ -1,5 +1,4 @@
-
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
@@ -37,28 +36,28 @@ async function submitToServer(data) {
     }
 
 }
-function changeTime() {
-    // Get the checkbox
-    var checkBox = document.getElementById("24time");
-    // Get the output text
-    var text = document.getElementsByName("timeoc");
+// function changeTime() {
+//     // Get the checkbox
+//     var checkBox = document.getElementById("24time");
+//     // Get the output text
+//     var text = document.getElementsByName("timeoc");
 
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true) {
-        console.log("a");
+//     // If the checkbox is checked, display the output text
+//     if (checkBox.checked == true) {
+//         console.log("a");
 
-        for (var i = 0; i < text.length; i += 1) {
-            text[i].style.display = 'block';
+//         for (var i = 0; i < text.length; i += 1) {
+//             text[i].style.display = 'block';
 
-        }
+//         }
 
-    } else {
-        console.log("a");
-        for (var i = 0; i < text.length; i += 1) {
-            text[i].style.display = 'none';
-        }
-    }
-}
+//     } else {
+//         console.log("a");
+//         for (var i = 0; i < text.length; i += 1) {
+//             text[i].style.display = 'none';
+//         }
+//     }
+// }
 
 const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }
 
@@ -80,7 +79,7 @@ const renderField = ({ type, lable, input }) => (
 );
 
 const renderCheck = ({ type, lable, input }) => (
-    <span className="input-row" id="24time"  >
+    <span className="input-row"  >
         <input {...input} type={type} />&ensp;
         <lable>{lable}</lable>
     </span >
@@ -129,58 +128,65 @@ const UploadAndDisplayImage = ({ lable }) => {
     );
 };
 
-const ContactFormFunc = ({ handleSubmit }) => (
+const ContactFormFunc = ({ handleSubmit }) => {
+    const [isRenderTime, setIsRenderTime] = useState(true);
+    const changeTime = () => {
+        setIsRenderTime(!isRenderTime);
+    }
+
+    return (
+        <form onSubmit={handleSubmit(submit)}>
+            <Paper className="form-review" elevation={10} style={paperStyle} >
+                <Grid align='center' style={{ color: "purple" }}>
+                    <h1>Tạo bãi đỗ mới</h1>
+                </Grid>
+
+                <Field className="field" name="name" lable='Name' component={renderField} type="text" />
+                <br />
+
+                <Field name="image_url" lable='Image' component={UploadAndDisplayImage} type="file" />
+                <br />
+
+                <Field name="location" lable='Location' component={renderField} type="text" />
+                <br />
+
+                <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" onChange={e => changeTime()} />
+                <br />
+                {isRenderTime &&
+                    <Field name="open_time" lable='Open_time' component={renderTime} type="time" />
+                }
+                <br />
+                {isRenderTime &&
+                    <Field name="close_time" lable='Close_time' component={renderTime} type="time" />
+                }
+                <br />
+
+                <Field name="price" lable='Price' component={renderField} type="text" />
+                <br />
+                <Field name="total_space" lable='Total space' component={renderField} type="text" />
+                <br />
+                <Field name="hasCamera" lable='HasCamera' component={renderCheck} type="checkbox" />
+                <VideoCameraBackIcon style={{ top: "200px" }} />
+                <br />
+                <Field name="hasRoof" lable='HasRoof' component={renderCheck} type="checkbox" />
+                <BeachAccessIcon />
+                <br />
+                <Field name="allowBooking" lable='AllowBooking' component={renderCheck} type="checkbox" />
+                <BookIcon />
+                <br />
+                <Field name="allowOvernight" lable='AllowOvernight' component={renderCheck} type="checkbox" />
+                <NightsStayIcon />
+                <br />
+                <Field name="description" lable='Description' component={renderOther} type="text" />
+                <br /><br />
+                <label for="submit-form" tabindex="0" style={{ color: "white" }}>Submit</label>
+                <input type="submit" href="\" />
 
 
-    <form onSubmit={handleSubmit(submit)}>
-        <Paper className="form-review" elevation={10} style={paperStyle} >
-            <Grid align='center' style={{ color: "purple" }}>
-                <h1>Tạo bãi đỗ mới</h1>
-            </Grid>
-
-            <Field className="field" name="name" lable='Name' component={renderField} type="text" />
-            <br />
-
-            <Field name="image_url" lable='Image' component={UploadAndDisplayImage} type="file" />
-            <br />
-
-            <Field name="location" lable='Location' component={renderField} type="text" />
-            <br />
-
-            <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" onChange={e => changeTime()} />
-            <br />
-
-            <Field name="open_time" lable='Open_time' component={renderTime} type="time" />
-            <br />
-
-            <Field name="close_time" lable='Close_time' component={renderTime} type="time" />
-            <br />
-
-            <Field name="price" lable='Price' component={renderField} type="text" />
-            <br />
-            <Field name="total_space" lable='Total space' component={renderField} type="text" />
-            <br />
-            <Field name="hasCamera" lable='HasCamera' component={renderCheck} type="checkbox" />
-            <VideoCameraBackIcon style={{ top: "200px" }} />
-            <br />
-            <Field name="hasRoof" lable='HasRoof' component={renderCheck} type="checkbox" />
-            <BeachAccessIcon />
-            <br />
-            <Field name="allowBooking" lable='AllowBooking' component={renderCheck} type="checkbox" />
-            <BookIcon />
-            <br />
-            <Field name="allowOvernight" lable='AllowOvernight' component={renderCheck} type="checkbox" />
-            <NightsStayIcon />
-            <br />
-            <Field name="description" lable='Description' component={renderOther} type="text" />
-            <br /><br />
-            <label for="submit-form" tabindex="0" style={{ color: "white" }}>Submit</label>
-            <input type="submit" href="\" />
-
-
-        </Paper>
-    </form >
-);
+            </Paper>
+        </form >
+    )
+};
 
 // Decorate the form component
 const ContactForm = reduxForm({

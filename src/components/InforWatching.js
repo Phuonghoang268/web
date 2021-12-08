@@ -12,27 +12,27 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import { useParams } from 'react-router-dom';
 
 
-const paperStyle = { padding: 20, height: '130vh', width: '800px', margin: "20px 20px" }
+const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }
 
-function changeTime() {
-    // Get the checkbox
-    var checkBox = document.getElementById("24time");
-    // Get the output text
-    var text = document.getElementsByName("timeoc");
+// function changeTime() {
+//     // Get the checkbox
+//     var checkBox = document.getElementById("24time");
+//     // Get the output text
+//     var text = document.getElementsByName("timeoc");
 
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true) {
+//     // If the checkbox is checked, display the output text
+//     if (checkBox.checked == true) {
 
-        for (var i = 0; i < text.length; i += 1) {
-            text[i].style.display = 'inline';
-        }
+//         for (var i = 0; i < text.length; i += 1) {
+//             text[i].style.display = 'inline';
+//         }
 
-    } else {
-        for (var i = 0; i < text.length; i += 1) {
-            text[i].style.display = 'inline';
-        }
-    }
-}
+//     } else {
+//         for (var i = 0; i < text.length; i += 1) {
+//             text[i].style.display = 'inline';
+//         }
+//     }
+// }
 
 const renderField = ({ type, lable, input }) => (
     <span className="input-row">
@@ -80,7 +80,10 @@ const ContactFormFunc = () => {
                 setpark(data);
             });
     }, []);
-
+    const [isRenderTime, setIsRenderTime] = useState(true);
+    const changeTime = () => {
+        setIsRenderTime(isRenderTime);
+    }
 
     return (
 
@@ -99,13 +102,18 @@ const ContactFormFunc = () => {
 
                     <Field name="location" lable='Location' component={renderField} type="text" format={value => value = `${park.location}`} />
                     <br />
-                    <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" format={value => value = `${park.allow24h}`} />
+                    {`${park.allow24h}` &&
+                        <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" format={value => value = `${park.allow24h}`} />
+                    }
+                    <br />
+                    {!`${park.allow24h}` &&
+                        <Field name="open_time" lable='Open_time' component={renderTime} type="time" format={value => value = `${park.open_time}`} />
+                    }
                     <br />
 
-                    <Field name="open_time" lable='Open_time' component={renderTime} type="time" format={value => value = `${park.open_time}`} />
-                    <br />
-
-                    <Field name="close_time" lable='Close_time' component={renderTime} type="time" format={value => value = `${park.close_time}`} />
+                    {!`${park.allow24h}` &&
+                        <Field name="close_time" lable='Close_time' component={renderTime} type="time" format={value => value = `${park.close_time}`} />
+                    }
                     <br />
 
                     <Field name="price" lable='Price' component={renderField} type="text" format={value => value = `${park.price}`} />

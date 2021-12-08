@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import Form from "./Form";
 import ContactForm from "./MyForm";
 import 'bootstrap/dist/css/bootstrap.min.css';
 

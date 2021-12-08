@@ -35,6 +35,14 @@ const renderOther = ({ type, lable, input }) => (
     </span >
 );
 
+const renderTime = ({ type, lable, input }) => (
+    <span className="input-row" name="timeoc">
+        <lable>{lable}</lable>
+        <br />
+        <input {...input} type={type} placeholder={lable + "*"} />
+    </span >
+);
+
 async function submitToServer(data) {
 
     try {
@@ -81,6 +89,10 @@ const ContactFormFunc = ({ handleSubmit }) => {
     }, []);
 
 
+    const [isRenderTime, setIsRenderTime] = useState(true);
+    const changeTime = () => {
+        setIsRenderTime(!isRenderTime);
+    }
 
     return (
 
@@ -99,6 +111,18 @@ const ContactFormFunc = ({ handleSubmit }) => {
 
                     <Field name="location" lable='Location' component={renderField} type="text" format={value => value === " " ? `${park.location}` : value} />
                     <br />
+
+                    <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" format={value => value === " " ? `${park.allow24h}` : value} onChange={e => changeTime()} />
+                    <br />
+                    {!`${park.allow24h}` == isRenderTime &&
+                        <Field name="open_time" lable='Open_time' component={renderTime} type="time" format={value => value === " " ? `${park.open_time}` : value} />
+                    }
+                    <br />
+                    {!`${park.allow24h}` == isRenderTime &&
+                        <Field name="close_time" lable='Close_time' component={renderTime} type="time" format={value => value === " " ? `${park.close_time}` : value} />
+                    }
+                    <br />
+
 
                     <Field name="price" lable='Price' component={renderField} type="text" format={value => value === " " ? `${park.price}` : value} />
                     <br />
@@ -129,7 +153,7 @@ const ContactFormFunc = ({ handleSubmit }) => {
 // Decorate the form component
 const UpdateInfor = reduxForm({
     form: 'InforWatching', // a unique name for this form
-    initialValues: { name: " ", image_url: " ", location: " ", price: " ", total_space: " ", hasCamera: " ", hasRoof: " ", allowBooking: " ", allowOvernight: " ", description: " " }
+    initialValues: { name: " ", image_url: " ", location: " ", price: " ", total_space: " ", hasCamera: " ", hasRoof: " ", allowBooking: " ", allowOvernight: " ", description: " ", allow24h: " ", open_time: " ", close_time: " " }
 })(ContactFormFunc);
 
 export default UpdateInfor;

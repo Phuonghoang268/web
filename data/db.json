@@ -38,6 +38,76 @@
       "description": "hghrgimklbmkdbmb b ",
       "image_url": "",
       "id": 3
+    },
+    {
+      "name": "a",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "open_time": "",
+      "id": 4
+    },
+    {
+      "name": "",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "open_time": "19:56",
+      "id": 5
+    },
+    {
+      "name": "",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "open_time": "",
+      "close_time": "",
+      "id": 6
+    },
+    {
+      "name": "",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "open_time": "",
+      "close_time": "",
+      "allow24h": true,
+      "id": 7
+    },
+    {
+      "name": "",
+      "total_space": "",
+      "location": "",
+      "price": "",
+      "hasCamera": "",
+      "hasRoof": "",
+      "allowOvernight": "",
+      "allowBooking": "",
+      "description": "",
+      "open_time": "",
+      "close_time": "",
+      "allow24h": "",
+      "id": 8
     }
   ]
 }

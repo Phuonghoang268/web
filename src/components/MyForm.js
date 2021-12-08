@@ -6,6 +6,7 @@ import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import BookIcon from '@mui/icons-material/Book';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 
 async function submitToServer(data) {
 
@@ -36,12 +37,34 @@ async function submitToServer(data) {
     }
 
 }
+function changeTime() {
+    // Get the checkbox
+    var checkBox = document.getElementById("24time");
+    // Get the output text
+    var text = document.getElementsByName("timeoc");
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+        console.log("a");
+
+        for (var i = 0; i < text.length; i += 1) {
+            text[i].style.display = 'block';
+
+        }
+
+    } else {
+        console.log("a");
+        for (var i = 0; i < text.length; i += 1) {
+            text[i].style.display = 'none';
+        }
+    }
+}
 
 const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }
 
 
-const submit = ({ name = '', total_space = '', location = '', price = '', hasCamera = '', hasRoof = '', allowOvernight = '', allowBooking = '', description = '' }) => {
-    submitToServer({ name, total_space, location, price, hasCamera, hasRoof, allowOvernight, allowBooking, description })
+const submit = ({ name = '', total_space = '', location = '', price = '', hasCamera = '', hasRoof = '', allowOvernight = '', allowBooking = '', description = '', open_time = '', close_time = '', allow24h = '' }) => {
+    submitToServer({ name, total_space, location, price, hasCamera, hasRoof, allowOvernight, allowBooking, description, open_time, close_time, allow24h })
         .then(data => {
             console.log(data);
             window.location.href = '/';
@@ -50,16 +73,24 @@ const submit = ({ name = '', total_space = '', location = '', price = '', hasCam
 }
 
 const renderField = ({ type, lable, input }) => (
-    <span className="input-row">
+    <span className="input-row" >
         <lable>{lable}</lable>
         <input {...input} type={type} placeholder={lable + "*"} />
     </span >
 );
 
 const renderCheck = ({ type, lable, input }) => (
-    <span className="input-row">
+    <span className="input-row" id="24time"  >
         <input {...input} type={type} />&ensp;
         <lable>{lable}</lable>
+    </span >
+);
+
+const renderTime = ({ type, lable, input }) => (
+    <span className="input-row" name="timeoc">
+        <lable>{lable}</lable>
+        <br />
+        <input {...input} type={type} placeholder={lable + "*"} />
     </span >
 );
 
@@ -114,6 +145,15 @@ const ContactFormFunc = ({ handleSubmit }) => (
             <br />
 
             <Field name="location" lable='Location' component={renderField} type="text" />
+            <br />
+
+            <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" onChange={e => changeTime()} />
+            <br />
+
+            <Field name="open_time" lable='Open_time' component={renderTime} type="time" />
+            <br />
+
+            <Field name="close_time" lable='Close_time' component={renderTime} type="time" />
             <br />
 
             <Field name="price" lable='Price' component={renderField} type="text" />

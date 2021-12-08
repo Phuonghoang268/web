@@ -14,6 +14,26 @@ import { useParams } from 'react-router-dom';
 
 const paperStyle = { padding: 20, height: '130vh', width: '800px', margin: "20px 20px" }
 
+function changeTime() {
+    // Get the checkbox
+    var checkBox = document.getElementById("24time");
+    // Get the output text
+    var text = document.getElementsByName("timeoc");
+
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+
+        for (var i = 0; i < text.length; i += 1) {
+            text[i].style.display = 'inline';
+        }
+
+    } else {
+        for (var i = 0; i < text.length; i += 1) {
+            text[i].style.display = 'inline';
+        }
+    }
+}
+
 const renderField = ({ type, lable, input }) => (
     <span className="input-row">
         <lable>{lable}</lable>
@@ -34,6 +54,17 @@ const renderOther = ({ type, lable, input }) => (
         <input {...input} type={type} placeholder="Other" readOnly />
     </span >
 );
+
+
+const renderTime = ({ type, lable, input }) => {
+    return (
+        <span className="input-row" name="timeoc">
+            <lable>{lable}</lable>
+            <br />
+            <input {...input} type={type} placeholder={lable + "*"} />
+        </span >
+    );
+};
 
 const ContactFormFunc = () => {
     const { id } = useParams();
@@ -67,6 +98,14 @@ const ContactFormFunc = () => {
                     <br />
 
                     <Field name="location" lable='Location' component={renderField} type="text" format={value => value = `${park.location}`} />
+                    <br />
+                    <Field name="allow24h" lable='Allow24h' component={renderCheck} type="checkbox" format={value => value = `${park.allow24h}`} />
+                    <br />
+
+                    <Field name="open_time" lable='Open_time' component={renderTime} type="time" format={value => value = `${park.open_time}`} />
+                    <br />
+
+                    <Field name="close_time" lable='Close_time' component={renderTime} type="time" format={value => value = `${park.close_time}`} />
                     <br />
 
                     <Field name="price" lable='Price' component={renderField} type="text" format={value => value = `${park.price}`} />

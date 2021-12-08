@@ -1,0 +1,13 @@
+{
+    "parks": [
+        {
+            "name": "BigC",
+            "star": 4.6,
+            "comment": [
+                "It's great",
+                "The park is so beautiful"
+            ],
+            "id": 1
+        }
+    ]
+}

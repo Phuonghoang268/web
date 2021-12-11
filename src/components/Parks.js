@@ -17,8 +17,8 @@ const ParkList = ({ parks }) => {
                     <h2 >{park.name}</h2>
                     <h4> {park.location}</h4>
                     <Button variant="outlined" color="success" style={{ float: right }} href={`/Delete/${park.id}`}>Xóa</Button>
-                    <Button variant="outlined" color="success" style={{ float: right, margin: "0 20px 0 0" }} href="/Review">Đánh giá</Button>
-                    <Button variant="outlined" color="success" style={{ float: right, margin: "0 20px 0 0" }} href={`/Edit/${park.id}`}>Chỉnh sửa</Button>
+                    <Button variant="outlined" color="success" style={{ float: right, margin: "0 20px 0 0" }} href={`/Review/${park.id}`}>Đánh giá</Button>
+                    <Button variant="outlined" color="success" style={{ float: right, margin: "0 20px 0 0" }} href={`/status/${park.id}`}>Quản lý</Button>
                     <Button color="success" style={{ float: right, margin: "0  20px" }} href={`/InforWatching/${park.id}`}>Xem</Button>
                 </div>
             ))

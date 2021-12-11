@@ -6,7 +6,7 @@ import { baseUrl } from '../shared/baseUrl';
 export const fetchParks = () => (dispatch) => {
     dispatch(parksLoading(true));
 
-    return fetch(baseUrl + 'parks')
+    return fetch(baseUrl + 'owner/parks/info')
         .then(response => {
             if (response.ok) {
                 return response;
@@ -16,10 +16,10 @@ export const fetchParks = () => (dispatch) => {
                 throw error;
             }
         },
-        error => {
-            var errmess = new Error(error.message);
-            throw errmess;
-        })
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
         .then(response => response.json())
         .then(parks => dispatch(addParks(parks)))
         .catch(error => dispatch(parksFailed(error.message)));

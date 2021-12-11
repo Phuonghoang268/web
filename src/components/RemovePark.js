@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
-const RemovePark = () => {
+export const RemovePark = () => {
     const { id } = useParams();
-    const [park, setpark] = useState(null)
+    const [park, setpark] = useState(null);
+    const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:8000/parks/' + id, {
+        fetch('http://localhost:8000/owner/parks/info/' + id, {
             method: 'DELETE',
+            credentials: "include",
         })
-            .then(res => res.text()) // or res.json()
-            .then(res => console.log(res))
-            .then(window.location.href = '/')
-    }, []);
 
+            .then(res => res.text())
+            .then(res => console.log(res))
+            .then(history.go(-1))
+    }, []);
 
     return (
 
@@ -23,4 +25,3 @@ const RemovePark = () => {
 }
 
 
-export default RemovePark;

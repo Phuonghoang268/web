@@ -1,19 +1,19 @@
 {
   "parks": [
     {
-      "name": "pizza hut",
-      "total_space": "23",
-      "location": "144 xuân thủy",
-      "price": "12",
-      "hasCamera": true,
-      "hasRoof": "",
-      "allowOvernight": "",
-      "allowBooking": "",
-      "description": "eeee",
-      "open_time": "",
-      "close_time": "",
-      "allow24h": true,
-      "id": 4
+      "id": 1,
+      "name": "Bãi gửi xe công viên Thủ Lệ",
+      "location": "Công viên Thủ Lệ",
+      "total_space": 100,
+      "price": 10000,
+      "hasCamera": 1,
+      "hasRoof": 1,
+      "allowOvernight": 0,
+      "allowBooking": 1,
+      "description": "Bãi đỗ xe dành cho những người tham quan công viên Thủ Lệ và những khu vực xung quanh.",
+      "open_time": "09:00",
+      "close_time": "23:00",
+      "allow24h": false
     },
     {
       "name": "uet",
@@ -28,7 +28,7 @@
       "open_time": "21:50",
       "close_time": "21:52",
       "allow24h": "",
-      "id": 5
+      "id": 2
     }
   ]
 }

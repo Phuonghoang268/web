@@ -78,7 +78,7 @@ const ContactFormFunc = ({ handleSubmit }) => {
     const [park, setpark] = useState(null)
 
     useEffect(() => {
-        fetch('http://localhost:8000/parks/' + id)
+        fetch('http://localhost:8000/owner/parks/info/' + id)
             .then(res => {
                 return res.json();
             })

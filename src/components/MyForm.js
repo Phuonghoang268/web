@@ -10,7 +10,7 @@ import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
 async function submitToServer(data) {
 
     try {
-        let response = await fetch('http://localhost:8000/parks', {
+        let response = await fetch('http://localhost:8000/owner/parks/info', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(data)
@@ -26,7 +26,7 @@ async function submitToServer(data) {
         var input = document.querySelector('input[type="file"]')
         var data = new FormData()
         data.append('file', input.files[0])
-        fetch('http://localhost:8080/images', {
+        fetch('localhost:8000/upload/parks/', { // cái id này lấy ở đâu ra à hình như nhầm cái
             method: 'POST',
             body: data
         })
@@ -36,28 +36,6 @@ async function submitToServer(data) {
     }
 
 }
-// function changeTime() {
-//     // Get the checkbox
-//     var checkBox = document.getElementById("24time");
-//     // Get the output text
-//     var text = document.getElementsByName("timeoc");
-
-//     // If the checkbox is checked, display the output text
-//     if (checkBox.checked == true) {
-//         console.log("a");
-
-//         for (var i = 0; i < text.length; i += 1) {
-//             text[i].style.display = 'block';
-
-//         }
-
-//     } else {
-//         console.log("a");
-//         for (var i = 0; i < text.length; i += 1) {
-//             text[i].style.display = 'none';
-//         }
-//     }
-// }
 
 const paperStyle = { padding: 20, width: '800px', margin: "20px 20px" }
 

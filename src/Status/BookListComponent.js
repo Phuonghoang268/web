@@ -13,7 +13,7 @@ export const Booklist = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(JSON.parse('localhost:8000/owner/parks/pending/' + id))
+        fetch('localhost:8000/owner/parks/pending/' + id)
             .then(res => {
                 return res.json();
             })

@@ -13,9 +13,9 @@ export const Booklist = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('localhost:8000/owner/parks/pending/' + id)
+        fetch(JSON.parse('localhost:8000/owner/parks/pending/' + id))
             .then(res => {
-                return JSON.parse(res);
+                return res.json();
             })
             .then(data => {
                 setpark(data.list);

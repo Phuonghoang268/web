@@ -180,8 +180,6 @@ table th {
   padding: 20;
   font-size: 20px;
   margin: "20px 20px";
-}
-
-.rating .star {
-  color: "#e6a13b";
+  border: none;
+  border-collapse: collapse;
 }

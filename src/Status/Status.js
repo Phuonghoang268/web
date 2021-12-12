@@ -5,9 +5,12 @@ import Header from '../components/HeaderComponent';
 import Footer from '../components/FooterComponent';
 import { useParams } from 'react-router-dom';
 import { Booklist } from './BookListComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { incrementAction, decrementAction } from '../redux/ActionCreators';
 
 export const Status = () => {
-
+    const dispatch = useDispatch();
+    const counter = useSelector(state => state.counterReducer.counter)
     const [park, setpark] = useState(null)
     const { id } = useParams();
 
@@ -35,7 +38,11 @@ export const Status = () => {
                     <div>
                         <h1>{park.name}</h1>
                         <h2> Tổng số chỗ trong bãi đỗ: {park.total_space}</h2>
-                        <h2>Số xe hiện tại: </h2>
+                        <h2>Số xe hiện tại:
+                            <button onClick={() => dispatch(incrementAction())}>+</button>
+                            {counter + Number(`${park.total_in}`)}
+                            <button onClick={() => dispatch(decrementAction())}>-</button>
+                        </h2>
                     </div>
 
                 )}
@@ -44,7 +51,7 @@ export const Status = () => {
                 <Booklist />
             </Paper>
 
-
+            <br />
 
 
             <Footer />

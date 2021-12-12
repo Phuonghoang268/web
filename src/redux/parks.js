@@ -16,3 +16,25 @@ export const Parks = (state = {
             return state;
     }
 }
+
+const initialState = {
+
+    counter: 0
+}
+
+export function counterReducer(state = initialState, action) {
+    switch (action.type) {
+        case ActionTypes.INCREMENT:
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+        case ActionTypes.DECREMENT:
+            return {
+                ...state,
+                counter: Math.max(state.counter - 1, 0)
+            }
+        default:
+            return state;
+    }
+}

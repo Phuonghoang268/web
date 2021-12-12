@@ -25,6 +25,7 @@ export const fetchParks = () => (dispatch) => {
         .catch(error => dispatch(parksFailed(error.message)));
 }
 
+
 export const parksLoading = () => ({
     type: ActionTypes.PARKS_LOADING
 });
@@ -38,3 +39,12 @@ export const addParks = (parks) => ({
     type: ActionTypes.ADD_PARKS,
     payload: parks
 });
+
+
+export const incrementAction = () => dispatch => {
+    dispatch({ type: ActionTypes.INCREMENT });
+}
+
+export const decrementAction = () => dispatch => {
+    dispatch({ type: ActionTypes.DECREMENT });
+}

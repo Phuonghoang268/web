@@ -19,6 +19,7 @@ export const Review = () => {
             .then(res => {
                 return res.json();
             })
+
             .then(data => {
                 setpark(data);
             });
